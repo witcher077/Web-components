@@ -1,4 +1,24 @@
 .header {
-  background-color: aquamarine;
+  background: linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(0, 0, 134) 32%, rgb(9, 9, 121) 35%, rgb(8, 34, 137) 43%, rgb(7, 62, 156) 52%, rgb(6, 90, 175) 61%, rgb(5, 106, 185) 66%, rgb(0, 212, 255) 100%);
+  display: flex;
+  flex-direction: row;
 }
-/*# sourceMappingURL=Styles.css.map */
+.header .nav-container ul {
+  display: flex;
+  flex-direction: row;
+}
+.header .nav-container li {
+  list-style: none;
+  color: aliceblue;
+  font-size: 20px;
+}
+
+.main .hero-bg {
+  background: url(../Assets/hero-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.main .hero-bg .hero-container {
+  max-width: 1000px;
+  margin: 30px auto;
+}/*# sourceMappingURL=Styles.css.map */

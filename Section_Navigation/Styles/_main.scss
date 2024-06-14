@@ -1,0 +1,12 @@
+.main{
+    .hero-bg{
+        background: url(../Assets/hero-bg.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        .hero-container{
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+    }
+}
