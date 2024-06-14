@@ -6,7 +6,21 @@
 
         .hero-container{
             max-width: 1000px;
-            margin: 30px auto;
+            margin: 0 auto;
+            padding-block: 30px;
+            display: grid;
+            gap: 15px;
+
+            h1, p{
+                color: $white;
+            }
+            button{
+                max-width: 100px;
+                padding-block: 10px;
+                background: $header-bg-gradient;
+                color: $white;
+                border: none;
+            }
         }
     }
 }
