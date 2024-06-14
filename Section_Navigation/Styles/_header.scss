@@ -1,0 +1,16 @@
+.header{
+    background:$header-bg-gradient;
+    display: flex;
+    flex-direction: row;
+    .nav-container{
+        ul{
+            display: flex;
+            flex-direction: row;
+        }
+        li{
+            list-style: none;
+            color: aliceblue;
+            font-size: 20px;
+        }
+    }
+}
