@@ -71,10 +71,15 @@
             width: 100%;
             left: 50%;
             transform: translateX(-50%);
+            margin-top: 10px;
 
-            &.active-nav{
-                border: 1px solid $white;
+            .section-nav-item{
+                color: $white;
+                &.active-nav{
+                    border: 1px solid $white;
+                }
             }
+
         }
     }
 
