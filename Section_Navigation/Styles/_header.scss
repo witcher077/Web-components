@@ -5,6 +5,9 @@
     align-items: center;
     font-family: $poppins-family;
     height: 7rem;
+    position: sticky;
+    top: 0;
+    z-index: 2;
     .logo{
         display: flex;
         grid-column: 2/3;
