@@ -1,7 +1,7 @@
 .header{
     background:$header-bg-gradient;
     display: grid;
-    grid-template-columns:10rem 1fr 2fr 1fr 10rem;
+    grid-template-columns:8rem 1fr 2fr 1fr 8rem;
     align-items: center;
     font-family: $poppins-family;
     height: 7rem;
@@ -43,6 +43,38 @@
         a{
             text-align: right;
             padding: 0 10px;
+        }
+    }
+    .ham-Burger-container{
+        display: none;
+        z-index: 5;
+        grid-column: 4/5;
+    .ham-Burger{
+
+        
+        display: grid;
+        grid-template-columns: 2fr repeat(3,2fr);
+        &:hover{
+            cursor: pointer;
+        }
+        span{
+            grid-column: 4/4;
+            display: block;
+            width: 33px;
+            height: 4px;
+            margin-bottom: 5px;
+            position: relative;
+            background: $white;
+            border-radius: 3px;
+            z-index: 1;
+        }
+    }}
+    @media only screen and (max-width:991px){
+        .nav-container,.soc-media{
+         display: none;
+        }
+        .ham-Burger-container{
+            display: block;
         }
     }
    
