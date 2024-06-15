@@ -8,6 +8,8 @@ $(document).ready(function(){
     const sectionNavItems = $(".section-nav .section-nav-item");
     const sectionsGroup = $(".group-section .section");
 
+    const sectionGroupNodeList = sectionsGroup.get();
+
     //Events
     $(window).scroll(function(){
         checkScroll();
@@ -22,6 +24,8 @@ $(document).ready(function(){
 
         //section navbar sticky code
         let scrollPosition = $(window).scrollTop();
+        console.log(scrollPosition)
+        console.log(triggerPoint)
         if(scrollPosition >= heroBgHeight){
             sectionNav.addClass('fixed-section-nav')
             sectionNav.css("top", headerHeight);
@@ -32,7 +36,13 @@ $(document).ready(function(){
         }
 
         //section nav items activation code on scroll
-        
+        sectionGroupNodeList.forEach((item, index)=>{
+            console.log($(item).offset().top)
+            if(($(item).offset().top+$(item).outerHeight()) < (scrollPosition + triggerPoint)){
+                $(item).css("color", "red");
+            }
+        })
+            
     }
 })
 
