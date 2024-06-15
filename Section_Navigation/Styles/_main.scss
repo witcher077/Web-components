@@ -8,11 +8,13 @@
             max-width: 1000px;
             margin: 0 auto;
             padding-block: 30px;
+            padding-inline: 15px;
             display: grid;
             gap: 15px;
 
             h1, p{
                 color: $white;
+                font-family: $poppins-family;
             }
             button{
                 max-width: 100px;
@@ -20,6 +22,40 @@
                 background: $header-bg-gradient;
                 color: $white;
                 border: none;
+                font-family: $poppins-family;
+            }
+        }
+    }
+    .section-nav{
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        margin-top: 20px;
+        position: relative;
+        background-color: $white;
+        border-radius: 4px;
+
+        &::before{
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: $header-bg-gradient;
+            z-index: -1;
+            border-radius: 4px;
+        }
+
+        .section-nav-item{
+            text-decoration: none;
+            flex: 1;
+            text-align: center;
+            padding-block: 15px;
+            font-family: $poppins-family;
+
+            &.active-nav{
+                background: $header-bg-gradient;
+                color: $white;
             }
         }
     }
