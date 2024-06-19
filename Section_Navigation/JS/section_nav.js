@@ -7,8 +7,19 @@ $(document).ready(function(){
     const heroBg = $(".hero-bg");
     const sectionNavItems = $(".section-nav .section-nav-item");
     const sectionsGroup = $(".group-section .section");
+    const hamburger=$(".ham-Burger");
+    const navContainer=$(".nav-container");
+    const soc_media=$(".soc-media");
+
+    $(hamburger).on('click',function(e){
+        $(this).toggleClass('open');
+        $(navContainer).toggleClass('nav-Container-sm');
+        $(soc_media).toggleClass('soc-media-sm');
+    })
+
 
     const sectionGroupNodeList = sectionsGroup.get();
+    const sectionNavItemsNodeList = sectionNavItems.get();
 
     //Events
     $(window).scroll(function(){
@@ -36,10 +47,16 @@ $(document).ready(function(){
         }
 
         //section nav items activation code on scroll
-        sectionGroupNodeList.forEach((item, index)=>{
-            console.log($(item).offset().top)
-            if(($(item).offset().top+$(item).outerHeight()) < (scrollPosition + triggerPoint)){
-                $(item).css("color", "red");
+        sectionGroupNodeList.forEach((item)=>{
+            let top =  $(window).scrollTop();
+            let offset = item.offset();
+            let height = item.offsetHeight();
+            let id = item.getAttribute('id');
+            if(top>=offset && top < (offset+height)){
+                sectionNavItemsNodeList.forEach(navLink=>{
+                 navLink.addClass.remove('active-nav');
+                 document.querySelector(".section-nav a [href*='+id+']").classList.add("active-nav")
+                })
             }
         })
             
