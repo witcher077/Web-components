@@ -18,8 +18,12 @@ $(document).ready(function(){
     })
 
 
+    // Array conversion
     const sectionGroupNodeList = sectionsGroup.get();
-    const sectionNavItemsNodeList = sectionNavItems.get();
+    const sectionNavItemsNode = sectionNavItems.toArray();
+
+    // color array
+    const colors = ["red", "green", "blue", "violet"];
 
     //Events
     $(window).scroll(function(){
@@ -31,12 +35,10 @@ $(document).ready(function(){
         let heroBgHeight = heroBg.outerHeight();
         let sectionNavOffset = sectionNav.offset().top;
         let sectionNavHeight = sectionNav.outerHeight();
-        let triggerPoint = sectionNavOffset + sectionNavHeight;
+        let triggerPoint = heroBgHeight;
 
         //section navbar sticky code
         let scrollPosition = $(window).scrollTop();
-        console.log(scrollPosition)
-        console.log(triggerPoint)
         if(scrollPosition >= heroBgHeight){
             sectionNav.addClass('fixed-section-nav')
             sectionNav.css("top", headerHeight);
@@ -47,17 +49,23 @@ $(document).ready(function(){
         }
 
         //section nav items activation code on scroll
-        sectionGroupNodeList.forEach((item)=>{
-            let top =  $(window).scrollTop();
-            let offset = item.offset();
-            let height = item.offsetHeight();
-            let id = item.getAttribute('id');
-            if(top>=offset && top < (offset+height)){
-                sectionNavItemsNodeList.forEach(navLink=>{
-                 navLink.addClass.remove('active-nav');
-                 document.querySelector(".section-nav a [href*='+id+']").classList.add("active-nav")
+        sectionGroupNodeList.forEach((item, index)=>{
+            
+            if($(item).offset().top < (scrollPosition + triggerPoint)){
+                let itemId = $(item).attr('id');
+                $(item).css("color", colors[index]);
+
+                sectionNavItemsNode.forEach((link)=>{
+                    $(link).removeClass('active-nav');
+                    if($(link).attr('href') === `#${itemId}`){
+                        $(link).addClass('active-nav');
+                    }
                 })
             }
+            else{
+                $(item).css("color", "");
+            }
+            
         })
             
     }
