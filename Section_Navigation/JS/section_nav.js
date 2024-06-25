@@ -7,6 +7,16 @@ $(document).ready(function(){
     const heroBg = $(".hero-bg");
     const sectionNavItems = $(".section-nav .section-nav-item");
     const sectionsGroup = $(".group-section .section");
+    const hamburger=$(".ham-Burger");
+    const navContainer=$(".nav-container");
+    const soc_media=$(".soc-media");
+
+    $(hamburger).on('click',function(e){
+        $(this).toggleClass('open');
+        $(navContainer).toggleClass('nav-Container-sm');
+        $(soc_media).toggleClass('soc-media-sm');
+    })
+
 
     // Array conversion
     const sectionGroupNodeList = sectionsGroup.get();
