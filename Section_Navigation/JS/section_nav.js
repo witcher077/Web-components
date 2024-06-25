@@ -8,7 +8,12 @@ $(document).ready(function(){
     const sectionNavItems = $(".section-nav .section-nav-item");
     const sectionsGroup = $(".group-section .section");
 
+    // Array conversion
     const sectionGroupNodeList = sectionsGroup.get();
+    const sectionNavItemsNode = sectionNavItems.toArray();
+
+    // color array
+    const colors = ["red", "green", "blue", "violet"];
 
     //Events
     $(window).scroll(function(){
@@ -20,12 +25,10 @@ $(document).ready(function(){
         let heroBgHeight = heroBg.outerHeight();
         let sectionNavOffset = sectionNav.offset().top;
         let sectionNavHeight = sectionNav.outerHeight();
-        let triggerPoint = sectionNavOffset + sectionNavHeight;
+        let triggerPoint = heroBgHeight;
 
         //section navbar sticky code
         let scrollPosition = $(window).scrollTop();
-        console.log(scrollPosition)
-        console.log(triggerPoint)
         if(scrollPosition >= heroBgHeight){
             sectionNav.addClass('fixed-section-nav')
             sectionNav.css("top", headerHeight);
@@ -37,10 +40,22 @@ $(document).ready(function(){
 
         //section nav items activation code on scroll
         sectionGroupNodeList.forEach((item, index)=>{
-            console.log($(item).offset().top)
-            if(($(item).offset().top+$(item).outerHeight()) < (scrollPosition + triggerPoint)){
-                $(item).css("color", "red");
+            
+            if($(item).offset().top < (scrollPosition + triggerPoint)){
+                let itemId = $(item).attr('id');
+                $(item).css("color", colors[index]);
+
+                sectionNavItemsNode.forEach((link)=>{
+                    $(link).removeClass('active-nav');
+                    if($(link).attr('href') === `#${itemId}`){
+                        $(link).addClass('active-nav');
+                    }
+                })
             }
+            else{
+                $(item).css("color", "");
+            }
+            
         })
             
     }
