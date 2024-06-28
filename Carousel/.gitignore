@@ -1,0 +1,4 @@
+# Ignore carousel.css and carousel.css.map file inside the styles folder
+Styles/carousel.css
+Styles/carousel.css.map
+
