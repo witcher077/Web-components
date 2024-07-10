@@ -18,10 +18,10 @@ async function fetchData(){
             return `<li class="item">
                 <img src=${image} alt=${title} class="image">
                 <h3 class="title">${title}</h3>
-                <span class="price">${price}</span>
+                <span class="price">${price}$</span>
                 <p class="description">${description}</p>
             </li>`
-        })
+        }).join("");
 
         listWrapper.innerHTML = items;
     }
