@@ -8,7 +8,6 @@ async function fetchData(){
     try{
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data);
 
         const listWrapper = document.getElementById('data-list');
 
@@ -30,3 +29,29 @@ async function fetchData(){
     }
 }
 fetchData()
+
+// DOM selection
+const navBtn = document.querySelectorAll('.navigation-btns .btn');
+const carouselWrapper = document.querySelector('.carousel-wrapper');
+const carouselList = document.querySelector('.list');
+const carouselItem = document.getElementsByClassName('item');
+
+navBtn.forEach((btn)=>{
+    btn.addEventListener('click', (e)=>{
+        const currentBtn = e.currentTarget;
+        const wrapperWidth = carouselWrapper.clientWidth;
+        const scrollAmount = wrapperWidth < 768 ? 2 : wrapperWidth >= 768 && wrapperWidth <= 992 ? 3 : 4;
+
+        scrollCarousel(currentBtn, scrollAmount)
+    })
+})
+
+function scrollCarousel(currentBtn, scrollAmount){
+    if(currentBtn.classList.contains('prev-btn')){
+        carouselList.scrollBy({ left: carouselItem[0].offsetWidth*(-scrollAmount), behavior: 'smooth' });  
+    }
+    else if(currentBtn.classList.contains('next-btn')){
+        carouselList.scrollBy({ left: carouselItem[0].offsetWidth*scrollAmount, behavior: 'smooth' });
+    }
+}
+
