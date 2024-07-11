@@ -21,17 +21,19 @@ body{
         margin: 0 auto;
         padding-block: 50px;
         border: 1px solid #000;
+        position: relative;
 
         .list{
             display: grid;
             overflow-x: scroll;
+            scroll-snap-type: both;
             &::-webkit-scrollbar{
                 display: none;
             }
         
             .item{
                 list-style: none;
-                width: calc(var(--container-width)/4 - 20px);
+                width: calc(var(--container-width)/4 - 16px);
                 margin: 0 10px;
                 border: 1px solid #fff;
                 display: grid;
@@ -40,6 +42,17 @@ body{
                 gap: 5px;
                 padding: 10px;
                 background: $gradient1;
+                border-radius: 5px;
+                box-shadow: $box-shadow-1;
+                scroll-snap-align: start;
+
+                @media (max-width:992px){
+                    width: calc((100vw / 3) - 20px);
+                    scroll-snap-align: center;
+                }
+                @media (max-width:767px){
+                    width: calc((100vw / 2) - 20px);
+                }
                 .image{
                     max-width: 200px;
                     width: 100%;
@@ -60,6 +73,39 @@ body{
                     -webkit-box-orient: vertical;
                     overflow: hidden;
                     text-overflow: ellipsis;
+                }
+            }
+        }
+        .navigation-btns{
+            @media (max-width:767px){
+                display: none;
+            }
+            > *{
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                border: none;
+                font-size: 25px;
+                position: absolute;
+                &.prev-btn{
+                    left: -20px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    @media (max-width:1024px){
+                        bottom: -50px;
+                        left: 43%;
+                        top: unset;
+                    }
+                }
+                &.next-btn{
+                    right: -20px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    @media (max-width:1024px){
+                        bottom: -50px;
+                        right: 43%;
+                        top: unset;
+                    }
                 }
             }
         }
