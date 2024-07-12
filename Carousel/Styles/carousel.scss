@@ -87,10 +87,14 @@ body{
                 border: none;
                 font-size: 25px;
                 position: absolute;
+                cursor: pointer;
                 &.prev-btn{
                     left: -20px;
                     top: 50%;
                     transform: translateY(-50%);
+                    &.disabled{
+                        opacity: 0.5;
+                    }
                     @media (max-width:1024px){
                         bottom: -50px;
                         left: 43%;
@@ -101,6 +105,9 @@ body{
                     right: -20px;
                     top: 50%;
                     transform: translateY(-50%);
+                    &.disabled{
+                        opacity: 0.5
+                    }
                     @media (max-width:1024px){
                         bottom: -50px;
                         right: 43%;

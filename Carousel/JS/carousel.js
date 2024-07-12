@@ -36,19 +36,36 @@ const carouselWrapper = document.querySelector('.carousel-wrapper');
 const carouselList = document.querySelector('.list');
 const carouselItem = document.getElementsByClassName('item');
 
+
+carouselList.addEventListener('scroll', ()=>{
+    const maxScrollLeft = carouselList.scrollWidth - carouselList.clientWidth;
+    let scrollLeft = carouselList.scrollLeft;
+
+    if(scrollLeft >= (maxScrollLeft - 10)){
+        document.querySelector('.next-btn').setAttribute('disabled', true);
+    }
+    else if(scrollLeft <= 10){
+        document.querySelector('.prev-btn').setAttribute('disabled', true)
+    }
+    else{
+        document.querySelector('.next-btn').removeAttribute('disabled', false);
+        document.querySelector('.prev-btn').removeAttribute('disabled', false);
+    }
+})
 navBtn.forEach((btn)=>{
     btn.addEventListener('click', (e)=>{
         const currentBtn = e.currentTarget;
         const wrapperWidth = carouselWrapper.clientWidth;
         const scrollAmount = wrapperWidth < 768 ? 2 : wrapperWidth >= 768 && wrapperWidth <= 992 ? 3 : 4;
-
+        
+        //scroll carousel function call
         scrollCarousel(currentBtn, scrollAmount)
     })
 })
 
 function scrollCarousel(currentBtn, scrollAmount){
     if(currentBtn.classList.contains('prev-btn')){
-        carouselList.scrollBy({ left: carouselItem[0].offsetWidth*(-scrollAmount), behavior: 'smooth' });  
+        carouselList.scrollBy({ left: carouselItem[0].offsetWidth*(-scrollAmount), behavior: 'smooth' });   
     }
     else if(currentBtn.classList.contains('next-btn')){
         carouselList.scrollBy({ left: carouselItem[0].offsetWidth*scrollAmount, behavior: 'smooth' });
