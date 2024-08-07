@@ -1,0 +1,3 @@
+# Ignore navigation.css and navigation.css.map file inside the styles folder
+Styles/navigation.css
+Styles/navigation.css.map
