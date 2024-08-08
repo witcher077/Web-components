@@ -16,12 +16,12 @@ body{
     border-radius: 5px;
 
     a{
-        border: 1px solid blue;
+        border: 1px solid $blue;
         text-align: center;
         text-decoration: none;
         padding-block: 5px;
         &:focus{
-            outline: 2px solid red;
+            outline: 2px solid $red;
             border: 0;
         }
     }
